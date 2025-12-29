@@ -37,12 +37,12 @@
         body { background-color: #F9F9F9; color: #333333; overflow-x: hidden; scroll-behavior: smooth; }
         .hero-overlay { background: rgba(0, 0, 0, 0.3); }
         .btn-transition { transition: all 0.3s ease-in-out; }
-        /* Optional: Add a subtle fade-in for the photo */
         .profile-photo { filter: grayscale(100%); transition: filter 0.5s ease; }
         .profile-photo:hover { filter: grayscale(0%); }
+        [x-cloak] { display: none !important; }
     </style>
 </head>
-<body x-data="{ mobileMenuOpen: false }">
+<body x-data="{ mobileMenuOpen: false, disclosureOpen: false, waiverAccepted: false }">
 
     <!-- Navigation -->
     <nav class="fixed w-full z-50 bg-saltwhite border-b border-gray-100">
@@ -52,16 +52,14 @@
                     <span class="font-serif text-2xl tracking-tighter text-oceanteal font-bold uppercase">And She Awoke</span>
                 </div>
                 
-                <!-- Desktop Nav -->
                 <div class="hidden md:flex space-x-8 items-center font-sans text-xs tracking-widest uppercase font-semibold">
                     <a href="#philosophy" class="hover:text-oceanteal transition">Philosophy</a>
                     <a href="#sessions" class="hover:text-oceanteal transition">Sessions</a>
                     <a href="#science" class="hover:text-oceanteal transition">Science</a>
                     <a href="#about" class="hover:text-oceanteal transition">About</a>
-                    <a href="#sessions" class="bg-oceanteal text-white px-6 py-3 btn-transition hover:bg-black">Book Now</a>
+                    <a href="#exchange" class="bg-oceanteal text-white px-6 py-3 btn-transition hover:bg-black">Request Session</a>
                 </div>
 
-                <!-- Mobile Menu Button -->
                 <div class="md:hidden">
                     <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-charcoal focus:outline-none">
                         <svg x-show="!mobileMenuOpen" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
@@ -71,20 +69,18 @@
             </div>
         </div>
 
-        <!-- Mobile Menu Overlay -->
         <div x-show="mobileMenuOpen" x-transition class="md:hidden bg-saltwhite p-6 space-y-4 font-sans text-center border-t border-gray-100 shadow-xl">
             <a href="#philosophy" @click="mobileMenuOpen = false" class="block py-2">Philosophy</a>
             <a href="#sessions" @click="mobileMenuOpen = false" class="block py-2">Sessions</a>
             <a href="#science" @click="mobileMenuOpen = false" class="block py-2">Science</a>
             <a href="#about" @click="mobileMenuOpen = false" class="block py-2">About</a>
-            <a href="#sessions" @click="mobileMenuOpen = false" class="block bg-oceanteal text-white py-3">Book Now</a>
+            <a href="#exchange" @click="mobileMenuOpen = false" class="block bg-oceanteal text-white py-3">Request Session</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <header class="relative h-screen flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0 z-0">
-            <!-- Using a serene Newport-style coast placeholder -->
             <img src="https://images.unsplash.com/photo-1469474099711-42391995c50c?auto=format&fit=crop&q=80&w=2000" alt="Newport Coast Horizon" class="w-full h-full object-cover">
             <div class="absolute inset-0 hero-overlay"></div>
         </div>
@@ -94,32 +90,27 @@
             <p class="font-sans text-lg md:text-xl text-white mb-10 font-light leading-relaxed">
                 Reconnective Healing is not a treatment. It is an invitation to interact with a spectrum of energy, light, and information that has always been yours.
             </p>
-            <a href="#sessions" class="inline-block bg-oceanteal text-white font-sans uppercase tracking-widest px-10 py-5 text-sm font-bold btn-transition hover:bg-white hover:text-oceanteal">
-                Schedule Your Experience
+            <a href="#exchange" class="inline-block bg-oceanteal text-white font-sans uppercase tracking-widest px-10 py-5 text-sm font-bold btn-transition hover:bg-white hover:text-oceanteal">
+                Initiate an Exchange
             </a>
         </div>
     </header>
 
-    <!-- Section: Philosophy (The Awakening) -->
+    <!-- Section: Philosophy -->
     <section id="philosophy" class="py-24 md:py-32 bg-saltwhite px-6">
         <div class="max-w-3xl mx-auto text-center">
             <h2 class="font-serif text-3xl md:text-4xl mb-12 italic">"Healing is a choice. A remembering."</h2>
             <div class="font-sans text-lg leading-relaxed space-y-6 text-charcoal/80 font-light">
-                <p>
-                    We spend our lives searching for what is "broken," trying to fix what we think is lost. But the frequencies of Reconnective Healing suggest a different truth: You are already whole. 
-                </p>
-                <p>
-                    You have simply become disconnected from the grid of the universe. Whether here in the quiet air of Newport or across the globe via a remote session, we don’t "do" a healing. We step into the field and allow the frequencies to reorganize the body, the mind, and the spirit. 
-                </p>
+                <p>We spend our lives searching for what is "broken," trying to fix what we think is lost. But the frequencies of Reconnective Healing suggest a different truth: You are already whole.</p>
+                <p>You have simply become disconnected from the grid of the universe. Whether here in the quiet air of Newport or across the globe via a remote session, we don’t "do" a healing. We step into the field and allow the frequencies to reorganize the body, the mind, and the spirit.</p>
             </div>
         </div>
     </section>
 
-    <!-- Section: The Three Elements Grid -->
+    <!-- Section: Elements Grid -->
     <section class="py-20 bg-white px-6">
         <div class="max-w-7xl mx-auto">
             <div class="grid md:grid-cols-3 gap-12 text-center">
-                <!-- Energy -->
                 <div class="p-8 border border-transparent hover:border-gray-100 transition duration-500">
                     <div class="w-16 h-16 bg-oceanteal mx-auto mb-6 flex items-center justify-center">
                         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -127,7 +118,6 @@
                     <h3 class="font-serif text-2xl mb-4 uppercase tracking-tighter">Energy</h3>
                     <p class="font-sans text-sm text-charcoal/70 leading-relaxed font-light">The tangible vibration that sustains our physical form and binds us to the material world.</p>
                 </div>
-                <!-- Light -->
                 <div class="p-8 border border-transparent hover:border-gray-100 transition duration-500">
                     <div class="w-16 h-16 bg-oceanteal mx-auto mb-6 flex items-center justify-center">
                         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -135,7 +125,6 @@
                     <h3 class="font-serif text-2xl mb-4 uppercase tracking-tighter">Light</h3>
                     <p class="font-sans text-sm text-charcoal/70 leading-relaxed font-light">The resonance and communication between our cells and the cosmic intelligence.</p>
                 </div>
-                <!-- Information -->
                 <div class="p-8 border border-transparent hover:border-gray-100 transition duration-500">
                     <div class="w-16 h-16 bg-oceanteal mx-auto mb-6 flex items-center justify-center">
                         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -155,25 +144,77 @@
         </div>
         
         <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            <!-- Local Card -->
             <div class="bg-saltwhite p-12 text-center flex flex-col items-center shadow-sm border border-gray-100">
                 <span class="font-sans text-xs uppercase tracking-widest mb-4 font-bold text-oceanteal">Newport, Rhode Island</span>
                 <h3 class="font-serif text-3xl mb-6 italic">In-Person Session</h3>
-                <p class="font-sans text-charcoal/70 mb-8 leading-relaxed font-light text-sm">
-                    Relax on a massage table, fully clothed. There is no touch, no ritual, and no complex technique. I simply facilitate the interaction between you and the frequencies in a peaceful, dedicated space.
-                </p>
-                <a href="mailto:jolene@andsheawoke.com" class="mt-auto border border-oceanteal text-oceanteal px-12 py-4 font-sans text-xs font-bold uppercase tracking-widest btn-transition hover:bg-oceanteal hover:text-white">Request Session</a>
+                <p class="font-sans text-charcoal/70 mb-8 leading-relaxed font-light text-sm">Relax on a massage table, fully clothed. There is no touch, no ritual, and no complex technique. I simply facilitate the interaction between you and the frequencies in a peaceful, dedicated space.</p>
+                <a href="#exchange" class="mt-auto border border-oceanteal text-oceanteal px-12 py-4 font-sans text-xs font-bold uppercase tracking-widest btn-transition hover:bg-oceanteal hover:text-white">Request Session</a>
             </div>
 
-            <!-- Remote Card -->
             <div class="bg-saltwhite p-12 text-center flex flex-col items-center shadow-sm border border-gray-100">
                 <span class="font-sans text-xs uppercase tracking-widest mb-4 font-bold text-oceanteal">Available Globally</span>
                 <h3 class="font-serif text-3xl mb-6 italic">Distance Healing</h3>
-                <p class="font-sans text-charcoal/70 mb-8 leading-relaxed font-light text-sm">
-                    Time and space are human constructs. These frequencies are non-local. We schedule a time for you to lie down at home while I facilitate the session from my studio. The interaction is just as tangible, the results identical.
-                </p>
-                <a href="mailto:jolene@andsheawoke.com" class="mt-auto border border-oceanteal text-oceanteal px-12 py-4 font-sans text-xs font-bold uppercase tracking-widest btn-transition hover:bg-oceanteal hover:text-white">Book Remote</a>
+                <p class="font-sans text-charcoal/70 mb-8 leading-relaxed font-light text-sm">Time and space are human constructs. These frequencies are non-local. We schedule a time for you to lie down at home while I facilitate the session from my studio. The interaction is just as tangible, the results identical.</p>
+                <a href="#exchange" class="mt-auto border border-oceanteal text-oceanteal px-12 py-4 font-sans text-xs font-bold uppercase tracking-widest btn-transition hover:bg-oceanteal hover:text-white">Book Remote</a>
             </div>
+        </div>
+    </section>
+
+    <!-- Section: The Exchange (FORM) -->
+    <section id="exchange" class="py-24 bg-white px-6">
+        <div class="max-w-3xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="font-serif text-4xl mb-4 italic">Request Your Session</h2>
+                <p class="font-sans text-charcoal/60 text-sm font-light">Fill out the details below to initiate our exchange. I will respond via personal text message to coordinate our time together.</p>
+            </div>
+
+            <!-- Netlify Form Integration -->
+            <form name="session-request" method="POST" data-netlify="true" class="space-y-8">
+                <input type="hidden" name="form-name" value="session-request" />
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <label class="block font-sans text-[10px] uppercase tracking-widest font-bold mb-2">Full Name</label>
+                        <input type="text" name="name" required class="w-full bg-saltwhite border-b border-gray-200 py-3 px-4 focus:outline-none focus:border-oceanteal font-sans text-sm">
+                    </div>
+                    <div>
+                        <label class="block font-sans text-[10px] uppercase tracking-widest font-bold mb-2">Mobile Phone</label>
+                        <input type="tel" name="phone" required placeholder="For coordinating via SMS" class="w-full bg-saltwhite border-b border-gray-200 py-3 px-4 focus:outline-none focus:border-oceanteal font-sans text-sm">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block font-sans text-[10px] uppercase tracking-widest font-bold mb-2">Session Type</label>
+                    <select name="type" class="w-full bg-saltwhite border-b border-gray-200 py-3 px-4 focus:outline-none focus:border-oceanteal font-sans text-sm">
+                        <option value="In-Person">In-Person (Newport, RI)</option>
+                        <option value="Distance">Distance Healing (Remote)</option>
+                        <option value="Unsure">Not sure yet / Inquiry</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block font-sans text-[10px] uppercase tracking-widest font-bold mb-2">Your Intent / Message</label>
+                    <textarea name="message" rows="4" class="w-full bg-saltwhite border-b border-gray-200 py-3 px-4 focus:outline-none focus:border-oceanteal font-sans text-sm"></textarea>
+                </div>
+
+                <!-- WAIVER GATE -->
+                <div class="flex items-start space-x-4 pt-4">
+                    <input type="checkbox" id="waiver_check" @change="waiverAccepted = $event.target.checked" class="mt-1 accent-oceanteal">
+                    <label for="waiver_check" class="font-sans text-xs text-charcoal/70 leading-relaxed">
+                        I have read and agree to the <button type="button" @click="disclosureOpen = true" class="text-oceanteal underline font-bold">Wellness Disclosure & Waiver</button>. I understand that this is an energetic interaction and not a medical treatment.
+                    </label>
+                </div>
+
+                <div class="pt-8">
+                    <button type="submit" 
+                        :disabled="!waiverAccepted"
+                        :class="waiverAccepted ? 'bg-oceanteal hover:bg-black cursor-pointer' : 'bg-gray-300 cursor-not-allowed'"
+                        class="w-full text-white font-sans uppercase tracking-widest py-5 text-sm font-bold btn-transition">
+                        Send Request to Jolene
+                    </button>
+                    <p x-show="!waiverAccepted" class="text-[10px] text-center mt-4 text-red-800 uppercase tracking-widest">Please read and accept the waiver to proceed.</p>
+                </div>
+            </form>
         </div>
     </section>
 
@@ -182,19 +223,17 @@
         <div class="max-w-4xl mx-auto text-center">
             <h2 class="font-serif text-3xl md:text-4xl mb-12 italic text-sand">Observed by Science. Felt by the Soul.</h2>
             <div class="font-sans text-lg leading-relaxed space-y-8 font-light text-gray-300">
-                <p>
-                    This isn’t "faith" healing. It is the physics of the human biofield. Researchers from Stanford, Harvard, and the University of Arizona have documented the effects of these frequencies.
-                </p>
-                <div class="grid md:grid-cols-3 gap-8 pt-8">
-                    <div class="border-l border-oceanteal pl-4 text-left">
+                <p>This isn’t "faith" healing. It is the physics of the human biofield. Researchers from Stanford, Harvard, and the University of Arizona have documented the effects of these frequencies.</p>
+                <div class="grid md:grid-cols-3 gap-8 pt-8 text-left">
+                    <div class="border-l border-oceanteal pl-4">
                         <span class="block font-bold text-white mb-2 uppercase text-xs tracking-widest">Dr. William Tiller</span>
                         <p class="text-[10px] leading-relaxed uppercase">Stanford Professor Emeritus noted "negative entropy" in the space during these sessions, stabilizing the environment.</p>
                     </div>
-                    <div class="border-l border-oceanteal pl-4 text-left">
+                    <div class="border-l border-oceanteal pl-4">
                         <span class="block font-bold text-white mb-2 uppercase text-xs tracking-widest">Dr. Gary Schwartz</span>
                         <p class="text-[10px] leading-relaxed uppercase">Documented significant life-extension and heightened chlorophyll levels in plants interacting with the frequencies.</p>
                     </div>
-                    <div class="border-l border-oceanteal pl-4 text-left">
+                    <div class="border-l border-oceanteal pl-4">
                         <span class="block font-bold text-white mb-2 uppercase text-xs tracking-widest">Dr. Konstantin Korotkov</span>
                         <p class="text-[10px] leading-relaxed uppercase">Observed dramatic, coherent shifts in the autonomic nervous system and the human biofield using EPC technology.</p>
                     </div>
@@ -207,21 +246,14 @@
     <section id="about" class="py-24 bg-saltwhite px-6">
         <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
             <div>
-                <!-- YOUR LOCAL FILE: jolene-face.jpg -->
                 <img src="./jolene-face.jpg" alt="Jolene Powell" class="profile-photo shadow-2xl w-full">
             </div>
             <div>
                 <h2 class="font-serif text-4xl mb-8 italic">Meeting the Frequencies.</h2>
                 <div class="font-sans text-charcoal/80 space-y-6 leading-relaxed font-light">
-                    <p>
-                        My journey led me to Virginia Beach, where I first experienced the profound shift of Eric Pearl’s work. I walked into that room as one person and emerged as another—the seeker finally stopped searching.
-                    </p>
-                    <p>
-                        <strong class="font-semibold text-charcoal">"And She Awoke"</strong> is more than a name—it is the description of what happens when you finally stop trying to "fix" yourself and start allowing the universe to recognize you again. 
-                    </p>
-                    <p>
-                        As a Foundational Practitioner, I do not hold the power; I hold the space. I am here to facilitate that moment where you awaken to your own inherent balance.
-                    </p>
+                    <p>My journey led me to Virginia Beach, where I first experienced the profound shift of Eric Pearl’s work. I walked into that room as one person and emerged as another—the seeker finally stopped searching.</p>
+                    <p><strong class="font-semibold text-charcoal">"And She Awoke"</strong> is more than a name—it is the description of what happens when you finally stop trying to "fix" yourself and start allowing the universe to recognize you again.</p>
+                    <p>As a Foundational Practitioner, I do not hold the power; I hold the space. I am here to facilitate that moment where you awaken to your own inherent balance.</p>
                     <div class="pt-6">
                         <span class="font-serif italic text-3xl text-oceanteal">Jolene Powell</span>
                         <p class="text-xs uppercase tracking-widest font-bold mt-2 text-charcoal/60">Foundational Practitioner™</p>
@@ -268,16 +300,36 @@
             </div>
 
             <div class="text-[9px] text-gray-400 space-y-4 leading-relaxed max-w-4xl uppercase tracking-[0.1em]">
-                <p>
-                    <strong>Legal Disclaimer:</strong> Jolene Powell and "And She Awoke" make no claims, promises, or guarantees and are neither diagnosing nor treating specific health challenges. Reconnective Healing® is intended to be a supplement to, not a replacement for, professional medical or psychological care. You are solely responsible for your own medical treatment and care.
-                </p>
-                <p>
-                    Reconnective Healing® and The Reconnection® are registered trademarks of The Reconnection, LLC.
-                </p>
+                <p><strong>Legal Disclaimer:</strong> Jolene Powell and "And She Awoke" make no claims, promises, or guarantees and are neither diagnosing nor treating specific health challenges. Reconnective Healing® is intended to be a supplement to, not a replacement for, professional medical or psychological care. You are solely responsible for your own medical treatment and care.</p>
+                <p>Reconnective Healing® and The Reconnection® are registered trademarks of The Reconnection, LLC.</p>
                 <p class="pt-6 font-bold">&copy; 2023 And She Awoke. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
+
+    <!-- MODAL: WELLNESS DISCLOSURE & WAIVER -->
+    <div x-show="disclosureOpen" x-cloak class="fixed inset-0 z-[100] flex items-center justify-center px-6 overflow-y-auto bg-charcoal/90 backdrop-blur-sm" @click.away="disclosureOpen = false">
+        <div class="bg-saltwhite max-w-2xl w-full p-8 md:p-12 my-12 relative shadow-2xl overflow-y-auto max-h-[90vh]">
+            <button @click="disclosureOpen = false" class="absolute top-4 right-4 text-charcoal hover:text-oceanteal">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+            <h2 class="font-serif text-3xl mb-8 italic text-oceanteal">Wellness Disclosure & Waiver</h2>
+            <div class="font-sans text-sm text-charcoal/80 space-y-6 leading-relaxed font-light">
+                <p><strong>Nature of the Work:</strong> I, the client, understand that Reconnective Healing® is a form of energetic interaction that facilitates a return to balance. It involves no physical touch, medical diagnosis, or prescription. It is not "faith healing," but rather a biological interaction with frequencies of energy, light, and information.</p>
+                
+                <p><strong>No Medical Warranty:</strong> I understand that Jolene Powell is not a licensed medical doctor or psychiatrist. She makes no claims, promises, or guarantees regarding the cure of specific medical conditions. I understand that "healing" in this context refers to an overall return to spiritual and energetic equilibrium, which may or may not result in physical changes.</p>
+                
+                <p><strong>Personal Responsibility:</strong> I acknowledge that I am solely responsible for my own healthcare. I agree to continue with any current medical treatments and to consult with my primary physician before making any changes to my medications or healthcare protocols based on my experiences during or after a session.</p>
+                
+                <p><strong>Remote Sessions:</strong> I acknowledge that distance healing sessions operate through non-local frequencies and are functionally identical in intent and potential to in-person sessions. I take responsibility for providing a quiet, safe space for myself during remote interactions.</p>
+                
+                <p><strong>Release of Liability:</strong> By checking the agreement box and submitting my request, I hereby release Jolene Powell and 'And She Awoke' from any and all liability or claims of any nature that may arise from my participation in these sessions.</p>
+            </div>
+            <div class="mt-12 text-center">
+                <button @click="disclosureOpen = false" class="bg-oceanteal text-white px-10 py-4 font-sans text-xs font-bold uppercase tracking-widest btn-transition hover:bg-black">I Understand & Accept</button>
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>
