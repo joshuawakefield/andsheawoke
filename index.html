@@ -1,3 +1,11 @@
+This version restores the Newport Coast beach imagery, reorders the sections to match your original reference, and places the merged Exchange section (containing both the session information and the form) as the final piece of the journey just above the footer.
+
+code
+Html
+play_circle
+download
+content_copy
+expand_less
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,7 +49,6 @@
         .profile-photo:hover { filter: grayscale(0%); }
         [x-cloak] { display: none !important; }
         
-        /* Custom styling for radio buttons to look like premium cards */
         .session-radio:checked + label {
             border-color: #004B49;
             background-color: #F9F9F9;
@@ -61,9 +68,9 @@
                 
                 <div class="hidden md:flex space-x-8 items-center font-sans text-xs tracking-widest uppercase font-semibold">
                     <a href="#philosophy" class="hover:text-oceanteal transition">Philosophy</a>
-                    <a href="#exchange" class="hover:text-oceanteal transition">The Exchange</a>
                     <a href="#science" class="hover:text-oceanteal transition">Science</a>
                     <a href="#about" class="hover:text-oceanteal transition">About</a>
+                    <a href="#faq" class="hover:text-oceanteal transition">FAQ</a>
                     <a href="#exchange" class="bg-oceanteal text-white px-6 py-3 btn-transition hover:bg-black uppercase tracking-widest">Initiate</a>
                 </div>
 
@@ -78,14 +85,14 @@
 
         <div x-show="mobileMenuOpen" x-transition class="md:hidden bg-saltwhite p-6 space-y-4 font-sans text-center border-t border-gray-100 shadow-xl">
             <a href="#philosophy" @click="mobileMenuOpen = false" class="block py-2">Philosophy</a>
-            <a href="#exchange" @click="mobileMenuOpen = false" class="block py-2">The Exchange</a>
             <a href="#science" @click="mobileMenuOpen = false" class="block py-2">Science</a>
             <a href="#about" @click="mobileMenuOpen = false" class="block py-2">About</a>
+            <a href="#faq" @click="mobileMenuOpen = false" class="block py-2">FAQ</a>
             <a href="#exchange" @click="mobileMenuOpen = false" class="block bg-oceanteal text-white py-3">Initiate Exchange</a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- 1. Hero Section (Restored Beach Background) -->
     <header class="relative h-screen flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0 z-0">
             <img src="https://images.unsplash.com/photo-1469474099711-42391995c50c?auto=format&fit=crop&q=80&w=2000" alt="Newport Coast Horizon" class="w-full h-full object-cover">
@@ -93,7 +100,7 @@
         </div>
         
         <div class="relative z-10 text-center px-6 max-w-4xl">
-            <h1 class="font-serif text-5xl md:text-7xl text-white mb-6 italic italic-none">Beyond Healing. <br><span class="italic">A Return to Balance.</span></h1>
+            <h1 class="font-serif text-5xl md:text-7xl text-white mb-6">Beyond Healing. <br><span class="italic">A Return to Balance.</span></h1>
             <p class="font-sans text-lg md:text-xl text-white mb-10 font-light leading-relaxed">
                 Reconnective Healing is not a treatment. It is an invitation to interact with a spectrum of energy, light, and information that has always been yours.
             </p>
@@ -103,7 +110,7 @@
         </div>
     </header>
 
-    <!-- Section: Philosophy -->
+    <!-- 2. Philosophy Section -->
     <section id="philosophy" class="py-24 md:py-32 bg-saltwhite px-6 border-b border-gray-100">
         <div class="max-w-3xl mx-auto text-center">
             <h2 class="font-serif text-3xl md:text-4xl mb-12 italic">"Healing is a choice. A remembering."</h2>
@@ -114,111 +121,7 @@
         </div>
     </section>
 
-    <!-- Section: The Exchange (MERGED SESSIONS & FORM) -->
-    <section id="exchange" class="py-24 bg-sand px-6">
-        <div class="max-w-7xl mx-auto">
-            
-            <div class="text-center mb-20">
-                <h2 class="font-serif text-4xl md:text-5xl mb-4 italic">The Exchange</h2>
-                <p class="font-sans text-charcoal/60 uppercase tracking-widest text-xs font-bold">Request a session. Coordinate personally.</p>
-            </div>
-
-            <div class="grid lg:grid-cols-12 gap-16 items-start">
-                
-                <!-- Left Column: The Information -->
-                <div class="lg:col-span-5 space-y-12">
-                    <div>
-                        <span class="font-sans text-[10px] uppercase tracking-[0.2em] font-bold text-oceanteal mb-4 block">Interaction Modes</span>
-                        <div class="space-y-10">
-                            <div>
-                                <h3 class="font-serif text-2xl mb-3 italic">In-Person (Newport, RI)</h3>
-                                <p class="font-sans text-sm text-charcoal/70 leading-relaxed font-light">
-                                    Experience the frequencies in my quiet coastal studio. You will relax on a massage table, fully clothed. There is no physical touch or complex ritual—only the facilitation of the interaction between you and the field.
-                                </p>
-                            </div>
-                            <div class="h-px bg-charcoal/10 w-24"></div>
-                            <div>
-                                <h3 class="font-serif text-2xl mb-3 italic">Distance Healing (Global)</h3>
-                                <p class="font-sans text-sm text-charcoal/70 leading-relaxed font-light">
-                                    Time and space are human constructs; the frequencies are non-local. We schedule a window for you to lie down at home while I facilitate the session from my studio. The results are tangible and identical to in-person sessions.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-saltwhite/50 p-8 border border-charcoal/5">
-                        <h4 class="font-sans text-[10px] uppercase tracking-widest font-bold mb-4">What to Expect</h4>
-                        <p class="font-sans text-xs text-charcoal/60 leading-relaxed italic">
-                            Once you submit your request, I will receive a notification immediately. I respond via personal text message to coordinate our specific time and discuss any preliminary questions you may have.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Right Column: The Form -->
-                <div class="lg:col-span-7 bg-white p-8 md:p-12 shadow-sm">
-                    <form name="session-request" method="POST" data-netlify="true" class="space-y-8">
-                        <input type="hidden" name="form-name" value="session-request" />
-                        
-                        <div class="grid md:grid-cols-2 gap-8">
-                            <div>
-                                <label class="block font-sans text-[10px] uppercase tracking-widest font-bold mb-2">Full Name</label>
-                                <input type="text" name="name" required class="w-full bg-saltwhite border-b border-gray-200 py-3 px-4 focus:outline-none focus:border-oceanteal font-sans text-sm">
-                            </div>
-                            <div>
-                                <label class="block font-sans text-[10px] uppercase tracking-widest font-bold mb-2">Mobile Phone</label>
-                                <input type="tel" name="phone" required placeholder="For SMS coordination" class="w-full bg-saltwhite border-b border-gray-200 py-3 px-4 focus:outline-none focus:border-oceanteal font-sans text-sm">
-                            </div>
-                        </div>
-
-                        <div>
-                            <label class="block font-sans text-[10px] uppercase tracking-widest font-bold mb-4">Preferred Session Type</label>
-                            <div class="grid grid-cols-2 gap-4">
-                                <div>
-                                    <input type="radio" name="type" id="type-inperson" value="In-Person" class="hidden session-radio" checked>
-                                    <label for="type-inperson" class="block text-center border border-gray-200 py-4 px-2 cursor-pointer font-sans text-[10px] uppercase tracking-widest font-bold btn-transition">
-                                        In-Person
-                                    </label>
-                                </div>
-                                <div>
-                                    <input type="radio" name="type" id="type-distance" value="Distance" class="hidden session-radio">
-                                    <label for="type-distance" class="block text-center border border-gray-200 py-4 px-2 cursor-pointer font-sans text-[10px] uppercase tracking-widest font-bold btn-transition">
-                                        Distance
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div>
-                            <label class="block font-sans text-[10px] uppercase tracking-widest font-bold mb-2">Your Intent / Notes (Optional)</label>
-                            <textarea name="message" rows="3" placeholder="Briefly share what draws you to this work..." class="w-full bg-saltwhite border-b border-gray-200 py-3 px-4 focus:outline-none focus:border-oceanteal font-sans text-sm"></textarea>
-                        </div>
-
-                        <!-- WAIVER GATE -->
-                        <div class="flex items-start space-x-4 pt-4 border-t border-gray-100">
-                            <input type="checkbox" id="waiver_check" @change="waiverAccepted = $event.target.checked" class="mt-1 accent-oceanteal h-4 w-4">
-                            <label for="waiver_check" class="font-sans text-[11px] text-charcoal/70 leading-relaxed">
-                                I have read and agree to the <button type="button" @click="disclosureOpen = true" class="text-oceanteal underline font-bold">Wellness Disclosure & Waiver</button>. I understand that Jolene Powell is facilitating an energetic return to balance, not a medical treatment.
-                            </label>
-                        </div>
-
-                        <div class="pt-4">
-                            <button type="submit" 
-                                :disabled="!waiverAccepted"
-                                :class="waiverAccepted ? 'bg-oceanteal hover:bg-black cursor-pointer shadow-lg' : 'bg-gray-200 cursor-not-allowed text-gray-400'"
-                                class="w-full text-white font-sans uppercase tracking-[0.2em] py-5 text-xs font-bold btn-transition">
-                                Send Request to Jolene
-                            </button>
-                            <p x-show="!waiverAccepted" class="text-[9px] text-center mt-4 text-charcoal/40 uppercase tracking-widest">
-                                Agreement is required to initiate an exchange.
-                            </p>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section: Elements Grid -->
+    <!-- 3. Elements Grid Section -->
     <section class="py-24 bg-white px-6">
         <div class="max-w-7xl mx-auto">
             <div class="grid md:grid-cols-3 gap-12 text-center">
@@ -247,11 +150,11 @@
         </div>
     </section>
 
-    <!-- Section: Science -->
+    <!-- 4. Science Section -->
     <section id="science" class="py-24 bg-charcoal text-white px-6">
         <div class="max-w-4xl mx-auto text-center">
             <h2 class="font-serif text-3xl md:text-4xl mb-12 italic text-sand">Observed by Science. Felt by the Soul.</h2>
-            <div class="font-sans text-lg leading-relaxed space-y-8 font-light text-gray-300">
+            <div class="font-sans text-lg leading-relaxed space-y-8 font-light text-gray-300 text-center">
                 <p>This isn’t "faith" healing. It is the physics of the human biofield. Researchers from Stanford, Harvard, and the University of Arizona have documented the effects of these frequencies.</p>
                 <div class="grid md:grid-cols-3 gap-8 pt-8 text-left">
                     <div class="border-l border-oceanteal pl-4">
@@ -271,7 +174,7 @@
         </div>
     </section>
 
-    <!-- Section: About Jolene -->
+    <!-- 5. About Jolene Section -->
     <section id="about" class="py-24 bg-saltwhite px-6">
         <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
             <div>
@@ -292,8 +195,8 @@
         </div>
     </section>
 
-    <!-- FAQ -->
-    <section class="py-20 bg-white px-6">
+    <!-- 6. FAQ Section -->
+    <section id="faq" class="py-24 bg-white px-6">
         <div class="max-w-3xl mx-auto">
             <h2 class="font-serif text-3xl mb-12 text-center italic text-oceanteal">Common Questions</h2>
             <div class="space-y-12 font-sans">
@@ -313,6 +216,109 @@
         </div>
     </section>
 
+    <!-- 7. The Exchange (Last Section Above Footer) -->
+    <section id="exchange" class="py-24 bg-sand px-6 border-t border-gray-100">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20">
+                <h2 class="font-serif text-4xl md:text-5xl mb-4 italic">The Exchange</h2>
+                <p class="font-sans text-charcoal/60 uppercase tracking-widest text-xs font-bold">Request a session. Coordinate personally.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-16 items-start">
+                
+                <!-- Left: Modality Descriptions -->
+                <div class="lg:col-span-5 space-y-12">
+                    <div>
+                        <span class="font-sans text-[10px] uppercase tracking-[0.2em] font-bold text-oceanteal mb-4 block">Interaction Modes</span>
+                        <div class="space-y-10">
+                            <div>
+                                <h3 class="font-serif text-2xl mb-3 italic">In-Person (Newport, RI)</h3>
+                                <p class="font-sans text-sm text-charcoal/70 leading-relaxed font-light">
+                                    Experience the frequencies in my quiet coastal studio. You will relax on a massage table, fully clothed. There is no physical touch or complex ritual—only the facilitation of the interaction between you and the field.
+                                </p>
+                            </div>
+                            <div class="h-px bg-charcoal/10 w-24"></div>
+                            <div>
+                                <h3 class="font-serif text-2xl mb-3 italic">Distance Healing (Global)</h3>
+                                <p class="font-sans text-sm text-charcoal/70 leading-relaxed font-light">
+                                    Time and space are human constructs; the frequencies are non-local. We schedule a window for you to lie down at home while I facilitate the session. The results are tangible and identical to in-person sessions.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-saltwhite/50 p-8 border border-charcoal/5">
+                        <h4 class="font-sans text-[10px] uppercase tracking-widest font-bold mb-4">What to Expect</h4>
+                        <p class="font-sans text-xs text-charcoal/60 leading-relaxed italic">
+                            Once you submit your request, I respond via personal text message to coordinate our specific time and discuss any preliminary questions you may have.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Right: Exchange Form -->
+                <div class="lg:col-span-7 bg-white p-8 md:p-12 shadow-sm">
+                    <form name="session-request" method="POST" data-netlify="true" class="space-y-8">
+                        <input type="hidden" name="form-name" value="session-request" />
+                        
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div>
+                                <label class="block font-sans text-[10px] uppercase tracking-widest font-bold mb-2 text-oceanteal">Full Name</label>
+                                <input type="text" name="name" required class="w-full bg-saltwhite border-b border-gray-200 py-3 px-4 focus:outline-none focus:border-oceanteal font-sans text-sm">
+                            </div>
+                            <div>
+                                <label class="block font-sans text-[10px] uppercase tracking-widest font-bold mb-2 text-oceanteal">Mobile Phone</label>
+                                <input type="tel" name="phone" required placeholder="For SMS coordination" class="w-full bg-saltwhite border-b border-gray-200 py-3 px-4 focus:outline-none focus:border-oceanteal font-sans text-sm">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block font-sans text-[10px] uppercase tracking-widest font-bold mb-4 text-oceanteal">Preferred Session Type</label>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <input type="radio" name="type" id="type-inperson" value="In-Person" class="hidden session-radio" checked>
+                                    <label for="type-inperson" class="block text-center border border-gray-200 py-4 px-2 cursor-pointer font-sans text-[10px] uppercase tracking-widest font-bold btn-transition">
+                                        In-Person
+                                    </label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="type" id="type-distance" value="Distance" class="hidden session-radio">
+                                    <label for="type-distance" class="block text-center border border-gray-200 py-4 px-2 cursor-pointer font-sans text-[10px] uppercase tracking-widest font-bold btn-transition">
+                                        Distance
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block font-sans text-[10px] uppercase tracking-widest font-bold mb-2 text-oceanteal">Your Intent / Notes (Optional)</label>
+                            <textarea name="message" rows="3" placeholder="Briefly share what draws you to this work..." class="w-full bg-saltwhite border-b border-gray-200 py-3 px-4 focus:outline-none focus:border-oceanteal font-sans text-sm"></textarea>
+                        </div>
+
+                        <!-- WAIVER GATE -->
+                        <div class="flex items-start space-x-4 pt-4 border-t border-gray-100">
+                            <input type="checkbox" id="waiver_check" @change="waiverAccepted = $event.target.checked" class="mt-1 accent-oceanteal h-4 w-4">
+                            <label for="waiver_check" class="font-sans text-[11px] text-charcoal/70 leading-relaxed">
+                                I have read and agree to the <button type="button" @click="disclosureOpen = true" class="text-oceanteal underline font-bold">Wellness Disclosure & Waiver</button>.
+                            </label>
+                        </div>
+
+                        <div class="pt-4">
+                            <button type="submit" 
+                                :disabled="!waiverAccepted"
+                                :class="waiverAccepted ? 'bg-oceanteal hover:bg-black cursor-pointer shadow-lg' : 'bg-gray-200 cursor-not-allowed text-gray-400'"
+                                class="w-full text-white font-sans uppercase tracking-[0.2em] py-5 text-xs font-bold btn-transition">
+                                Send Request to Jolene
+                            </button>
+                            <p x-show="!waiverAccepted" class="text-[9px] text-center mt-4 text-charcoal/40 uppercase tracking-widest">
+                                Agreement is required to initiate an exchange.
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="bg-saltwhite pt-20 pb-10 border-t border-gray-200 px-6">
         <div class="max-w-7xl mx-auto">
@@ -323,7 +329,7 @@
                 </div>
                 <div class="flex space-x-6 text-[10px] uppercase font-bold tracking-widest">
                     <a href="#philosophy" class="hover:text-oceanteal">Philosophy</a>
-                    <a href="#exchange" class="hover:text-oceanteal">The Exchange</a>
+                    <a href="#science" class="hover:text-oceanteal">Science</a>
                     <a href="#about" class="hover:text-oceanteal">About</a>
                 </div>
             </div>
@@ -342,17 +348,12 @@
             <button @click="disclosureOpen = false" class="absolute top-4 right-4 text-charcoal hover:text-oceanteal">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
             </button>
-            <h2 class="font-serif text-3xl mb-8 italic text-oceanteal">Wellness Disclosure & Waiver</h2>
+            <h2 class="font-serif text-3xl mb-8 italic text-oceanteal text-center">Wellness Disclosure & Waiver</h2>
             <div class="font-sans text-sm text-charcoal/80 space-y-6 leading-relaxed font-light">
-                <p><strong>Nature of the Work:</strong> I, the client, understand that Reconnective Healing® is a form of energetic interaction that facilitates a return to balance. It involves no physical touch, medical diagnosis, or prescription. It is not "faith healing," but rather a biological interaction with frequencies of energy, light, and information.</p>
-                
-                <p><strong>No Medical Warranty:</strong> I understand that Jolene Powell is not a licensed medical doctor or psychiatrist. She makes no claims, promises, or guarantees regarding the cure of specific medical conditions. I understand that "healing" in this context refers to an overall return to spiritual and energetic equilibrium, which may or may not result in physical changes.</p>
-                
-                <p><strong>Personal Responsibility:</strong> I acknowledge that I am solely responsible for my own healthcare. I agree to continue with any current medical treatments and to consult with my primary physician before making any changes to my medications or healthcare protocols based on my experiences during or after a session.</p>
-                
-                <p><strong>Remote Sessions:</strong> I acknowledge that distance healing sessions operate through non-local frequencies and are functionally identical in intent and potential to in-person sessions. I take responsibility for providing a quiet, safe space for myself during remote interactions.</p>
-                
-                <p><strong>Release of Liability:</strong> By checking the agreement box and submitting my request, I hereby release Jolene Powell and 'And She Awoke' from any and all liability or claims of any nature that may arise from my participation in these sessions.</p>
+                <p><strong>Nature of the Work:</strong> I understand that Reconnective Healing® is a form of energetic interaction that facilitates a return to balance. It involves no physical touch, medical diagnosis, or prescription.</p>
+                <p><strong>No Medical Warranty:</strong> Jolene Powell is not a licensed medical doctor. She makes no claims regarding the cure of specific medical conditions.</p>
+                <p><strong>Personal Responsibility:</strong> I acknowledge that I am solely responsible for my own healthcare. I agree to continue with any current medical treatments.</p>
+                <p><strong>Release of Liability:</strong> By submitting my request, I hereby release Jolene Powell and 'And She Awoke' from any and all liability.</p>
             </div>
             <div class="mt-12 text-center">
                 <button @click="disclosureOpen = false" class="bg-oceanteal text-white px-10 py-4 font-sans text-xs font-bold uppercase tracking-widest btn-transition hover:bg-black">I Understand & Accept</button>
